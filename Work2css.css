@@ -249,13 +249,13 @@ nav ul {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #0f172a;
+  background: red;
   border: 5px solid white;
   cursor: pointer;
 }
 
 .hero-dot.active {
-  background: red;
+  background: #0f172a;
 }
 
 @keyframes slideText {
