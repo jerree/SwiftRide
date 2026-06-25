@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwiftRide</title>
+
+  <!-- CSS LINK -->
+  <link rel="stylesheet" href="Work2css.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+	<div id="preloader">
+	  <div class="loader-content">
+		<img src="logom.png" alt="SwiftRide Logo">
+		<h2>SwiftRide</h2>
+		<p>Loading...</p>
+	  </div>
+	</div>
+	
+	<div class= "upper">
+		<header>
+  			<h1 class="logo-text">
+			<img src="logom.png" alt="S Logo" class="logo-s">
+			wiftRide
+		  </h1>
+		</header>
+
+		<div class="menu-icon" id="menuIcon">
+			<i class="fas fa-bars"></i>
+		</div>
+
+		<nav id="navMenu">
+		  <ul>
+			<a href="#home">Home</a>
+			<a href="#about">About</a>
+			<a href="#features">Services</a>
+			<a href="#driver">Drivers</a>
+			<a href="#contact">Contact</a>
+		  </ul>
+		</nav>
+		<a href="#home" class="nav-btn">Book Ride</a>
+	</div>
+	
+	
+	<div class="container">
+	  <!-- HERO / SEARCH SECTION -->
+	  <section class="hero reveal slide-left" id="home">
+
+		<div class="hero-content">
+  			<h2 class= "hero-title1" id="heroTitle">Book Your Ride Instantly</h2>
+		</div>
+
+		<div class="hero-dots">
+		  <span class="hero-dot active" onclick="changeHero(0)"></span>
+		  <span class="hero-dot" onclick="changeHero(1)"></span>
+		</div>
+		<div class="search-box">
+			<form id="rideForm" action="html.html" method="get">
+				<div class="pickup-options">
+					<label>
+    					<input type="radio" name="pickup" value="now" checked>
+    					Pickup Now
+  					</label>
+  					<label>
+    					<input type="radio" name="pickup" value="later">
+    					Schedule Later
+  					</label>
+				
+					<div class="Kaduna-pickup">
+						<label>
+							<input type="radio" name="kaduna" value="kaduna" checked>
+							Kaduna
+						</label>
+					</div>
+				</div>				
+				<div class="form-row">
+					<div class="location-block">
+						<div class="location-labels">
+							<label for="from">From</label>
+							<label for="destination">To</label>
+						</div>
+
+
+						<div class="location-group">
+							<div class="select-wrapper">
+								<i class="fas fa-map-marker-alt location-icon"></i>
+								<select id="location" name="location" required>
+									<option value="Barnawa">Barnawa</option>
+									<option value="Sabo">Sabo</option>
+									<option value="Kamazou">Kamazou</option>
+									<option value="Narayi">Narayi</option>
+								</select>
+							</div>
+
+							<div class="divider">
+								 <i class="fas fa-exchange-alt swap-icon"></i>
+							</div>
+
+							<div class="select-wrapper">
+								<i class="fas fa-map-marker-alt location-icon"></i>
+								<select id="destination" name="destination" required>
+									<option value="Narayi">Narayi</option>
+									<option value="Sabo">Sabo</option>
+									<option value="Barnawa">Barnawa</option>
+									<option value="Kamazou">Kamazou</option>
+								</select>
+							</div>
+						</div>
+					</div>
+						<div class="date-wrapper">
+  							<input type="date" id="pickup-date" name="pickup-date" required>
+							<i class="fas fa-calendar-alt calendar-icon"></i>
+						</div>
+						<button type="submit">Search Ride</button><br>
+						<p id="error" style="color:red;"></p>
+				</div>
+			</form>
+		</div>
+	  </section>
+		
+	  <!-- RESULTS -->
+	  <section class="results reveal">
+
+			<div id="transportList" class="transport-container">
+
+		  	<!-- JS will insert cards here -->
+			</div>
+
+	  </section>
+		
+		<div id="bookingModal" class="modal">
+			<div class="modal-content">
+    			<span id="closeModal" class="close-btn">&times;</span>
+
+    			<h2>Ride Booked Successfully</h2>
+    			<p id="bookingDetails"></p>
+
+    			<button id="confirmBtn">Okay</button>
+  			</div>
+		</div>
+		
+		<section class="about-section reveal" id="about">
+			<div class="about-container">
+
+				<div class="about-left">
+			  		<span class="section-badge reveal slide-left">
+					About SwiftRide
+			  		</span>
+
+			  		<h2 class="reveal slide-left delay-1">Redefining Local Transportation in Kaduna</h2>
+
+			 		<p class="about-intro reveal slide-left delay-2">
+					SwiftRide is built to make movement easier, faster, and more reliable.
+					We connect riders with trusted transport options for daily trips,
+					scheduled rides, and quick delivery services.
+			  		</p>
+
+					<div class="about-mini-cards ">
+						<div class="about-mini-card reveal zoom-in delay-3">
+				  			<i class="fas fa-eye"></i>
+				  			<h3>Our Vision</h3>
+				  			<p>To become a trusted local mobility platform for safe and affordable movement.</p>
+						</div>
+
+						<div class="about-mini-card reveal zoom-in delay-4">
+				 			<i class="fas fa-bullseye"></i>
+				  			<h3>Our Mission</h3>
+				  			<p>To simplify transportation through fast booking, fair pricing, and reliable service.</p>
+						</div>
+			  		</div>
+
+			  		<div class="about-bottom reveal slide-up delay-3">
+						<div class="about-stat">
+				  			<h3>5+</h3>
+				  			<p>Service Areas</p>
+						</div>
+
+						<ul>
+						  <li><i class="fas fa-check-circle"></i> Fast ride booking</li>
+						  <li><i class="fas fa-check-circle"></i> Affordable transport options</li>
+						  <li><i class="fas fa-check-circle"></i> Reliable local movement</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="about-right reveal slide-up delay-3">
+			  		<div class="about-image-main"></div>
+			  		<div class="about-image-small"></div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="swiftride-features reveal" id="features">
+			<div class="header-features">
+  				<h2>Swiftride <span>Features</span></h2>
+  				<p>
+    			Discover the main features that make Swiftride fast, reliable, and user-friendly.
+   				Experience the future of mobility through cutting-edge swiftride services,
+    			thoughtfully crafted to combine comfort, affordability, and a strong commitment
+    			to environmental sustainability.
+  				</p>
+			</div>
+			
+  			<div class="features-layout">
+   				<!-- Left side -->
+				<div class="features-left">
+					<div class="feature-item blue-card reveal zoom-in delay-1">
+						<div class="feature-icon">
+						<i class="fas fa-bolt"></i>
+						</div>
+						<h3>Fast Booking</h3>
+						<p>Skip the long waits — with Swiftride you can book a ride in just a few taps, getting you on the road quickly and effortlessly.</p>
+
+					</div>
+
+					<div class="feature-item green-card reveal zoom-in delay-2">
+						<div class="feature-icon">
+							<i class="fas fa-shield-alt"></i>
+						</div>
+						<h3>Secure Payments</h3>
+						<p>Every transaction is protected with advanced encryption, giving you confidence that your money and personal details are always safe.</p>
+
+					</div>
+				</div>
+				
+    			<!-- Center car -->
+    			<div class="feature-center reveal zoom-in delay-3">
+     				<img src="logo.png" alt="Swiftride Car" />
+    			</div>
+
+   				<!-- Right side -->
+				<div class="features-right">
+					<div class="feature-item purple-card reveal zoom-in delay-4">
+						<div class="feature-icon">
+							<i class="fas fa-headset"></i>
+						</div>
+						<h3>24/7 Support</h3>
+						<p>Whether it's day or night, our dedicated support team is ready to assist you with any questions or issues, ensuring peace of mind around the clock.</p>
+					</div>
+
+					<div class="feature-item orange-card reveal zoom-in delay-5">
+						<div class="feature-icon">
+							<i class="fas fa-map-marker-alt"></i>
+						</div>
+						<h3>Real-time Tracking</h3>
+						<p>Watch your driver's progress live on the map and receive accurate arrival times, and stay fully informed from pickup to drop-off.</p>
+
+					</div>
+				</div>
+  			</div>
+		</section>
+
+		<section class="popular-routes reveal">
+  			<div class="routes-header">
+    			<span class="section-badge">
+      				<i class="fas fa-route"></i>
+      				Popular Routes
+      				<i class="fas fa-location-dot"></i>
+    			</span>
+
+    			<h2>Frequently Booked <span>Routes</span></h2>
+
+    			<p>
+				Explore some of the most requested SwiftRide routes around Kaduna.
+				</p>
+  			</div>
+
+			<div class="routes-container">
+				<div class="route-card">
+				  <div>
+					<h3>Barnawa → Narayi</h3>
+					<p>Average arrival time: 15 mins</p>
+				  </div>
+				  <span>500 NGN</span>
+				</div>
+
+				<div class="route-card">
+				  <div>
+					<h3>Sabo → Barnawa</h3>
+					<p>Average arrival time: 12 mins</p>
+				  </div>
+				  <span>700 NGN</span>
+				</div>
+
+				<div class="route-card">
+				  <div>
+					<h3>Kamazou → Narayi</h3>
+					<p>Average arrival time: 18 mins</p>
+				  </div>
+				  <span>600 NGN</span>
+				</div>
+
+				<div class="route-card">
+				  <div>
+					<h3>Narayi → Sabo</h3>
+					<p>Average arrival time: 10 mins</p>
+				  </div>
+				  <span>450 NGN</span>
+				</div>
+			</div>
+		</section>
+		
+		<section class="stats-section reveal">
+			<div class="stats-container">
+				<div class="stat-box">
+					<i class="fas fa-taxi stat-icon"></i>
+					<h2 class="counter" data-target="10" data-suffix="k+">0</h2>
+					<p>Rides Completed</p>
+				</div>
+
+				<div class="stat-box">
+					<i class="fas fa-user-tie stat-icon"></i>
+					<h2 class="counter" data-target="500" data-suffix="+">0</h2>
+					<p>Active Drivers</p>
+				</div>
+
+				<div class="stat-box">
+					<i class="fas fa-headset stat-icon"></i>
+					<h2 class="counter" data-target="24" data-suffix="/7">0</h2>
+					<p>Customer Support</p>
+				</div>
+
+				<div class="stat-box">
+					<i class="fas fa-star stat-icon"></i>
+					<h2 class="counter" data-target="98" data-suffix="%">0</h2>
+					<p>Customer Satisfaction</p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="testimonials-section reveal">
+			<div class="testimonials-header">
+				<span class="section-badge">
+					<i class="fas fa-star"></i>
+					Customer Reviews
+					<i class="fas fa-star"></i>
+				</span>
+				
+				<h2>What Our Customers<span> Say</span></h2>
+				<p>Real feedback from riders who trust SwiftRide for safe and reliable movement.</p>
+			</div>
+
+			<div class="testimonials-container">
+				<div class="testimonial-card reveal slide-up delay-1">
+					<div class="stars">★★★★★</div>
+			  		<p>"SwiftRide helped me get to school faster and without stress."</p>
+			 		<h3>Abubakar A.</h3>
+			 		<span>Student</span>
+				</div>
+
+				<div class="testimonial-card reveal slide-up delay-2">
+					<div class="stars">★★★★★</div>
+					<p>"The booking process is simple, fast, and the prices are fair."</p>
+					<h3>Aisha M.</h3>
+					<span>Daily Rider</span>
+				</div>
+
+				<div class="testimonial-card reveal slide-up delay-3">
+					<div class="stars">★★★★★</div>
+					<p>"I like how easy it is to find rides around Kaduna."</p>
+					<h3>Daniel O.</h3>
+					<span>Customer</span>
+				</div>
+			</div>
+		</section>
+		
+		<section class="driver-section reveal slide-up" id="driver">
+		  <div class="driver-container">
+
+			<div class="driver-text">
+			  <span class="section-badge">
+				<i class="fas fa-car"></i>
+				Become a Driver
+				<i class="fas fa-road"></i>
+			  </span>
+
+			  <h2>Drive With <span>SwiftRide</span></h2>
+
+			  <p>
+				Join SwiftRide as a driver and earn money by helping people move safely
+				around Kaduna.
+			  </p>
+
+			  <ul>
+				<li><i class="fas fa-check-circle"></i> Flexible working hours</li>
+				<li><i class="fas fa-check-circle"></i> Weekly earning opportunities</li>
+				<li><i class="fas fa-check-circle"></i> Connect with daily riders</li>
+			  </ul>
+
+			  <button class="driver-btn" onclick="openDriverModal()">Apply Now</button>
+			</div>
+
+			<div class="driver-card">
+			  <h3>Driver Requirements</h3>
+			  <p><i class="fas fa-id-card"></i> Valid means of identification</p>
+			  <p><i class="fas fa-car-side"></i> Roadworthy vehicle</p>
+			  <p><i class="fas fa-phone"></i> Active phone number</p>
+			  <p><i class="fas fa-map-marker-alt"></i> Kaduna based driver</p>
+			</div>
+
+		  </div>
+		</section>
+		
+		<div id="driverModal" class="modal">
+  			<div class="modal-content">
+    			<span id="closeDriverModal" class="close-btn">&times;</span>
+
+    			<h2>Driver Application</h2>
+
+				<form class="driver-form">
+				  <input type="text" placeholder="Full Name" required>
+				  <input type="tel" placeholder="Phone Number" required>
+				  <input type="email" placeholder="Email Address" required>
+				  <input type="text" placeholder="Vehicle Type" required>
+				  <input type="text" placeholder="Plate Number" required>
+
+				  <button type="submit">Submit Application</button>
+				</form>
+  			</div>
+		</div>
+		
+		<section class="cta-section reveal">
+		  <div class="cta-content">
+			<h2>Ready To Ride With SwiftRide?</h2>
+
+			<p>
+			  Experience fast, reliable and affordable transportation
+			  across Kaduna. Book your next ride today.
+			</p>
+
+			<div class="cta-buttons">
+			  <a href="#rideForm" class="cta-btn primary-btn">Book A Ride</a>
+
+			  <a href="#driver" class="cta-btn secondary-btn">
+				Become A Driver
+			  </a>
+			</div>
+		  </div>
+		</section>
+		
+	  <!-- FOOTER -->
+
+		<footer class="main-footer reveal fade-in" id="contact">
+  			<div class="footer-container">
+
+    			<div class="footer-col">
+      				<h3>About SwiftRide</h3>
+      				<p>
+        			SwiftRide is a reliable transportation platform offering fast,
+        			convenient, and affordable rides across Kaduna.
+     			 	</p>
+
+					<div class="subscribe-box">
+        				<input type="email" placeholder="Enter your email">
+        				<button>Subscribe</button>
+      				</div>
+    			</div>
+
+    			<div class="footer-col">
+				  <h3>Quick Links</h3>
+				  <a href="#about">About SwiftRide</a>
+				  <a href="#features">Services</a>
+				  <a href="#driver">Become a Driver</a>
+				  <a href="#contact">Contact Us</a>
+				</div>
+
+				<div class="footer-col">
+				  <h3>Contact Info</h3>
+				  <p><i class="fas fa-map-marker-alt"></i> Kaduna, Nigeria</p>
+				  <p><i class="fas fa-envelope"></i> support@swiftride.com</p>
+				  <p><i class="fas fa-phone"></i> 07123456789</p>
+
+				  <div class="social-icons">
+					<i class="fab fa-facebook-f"></i>
+					<i class="fab fa-x-twitter"></i>
+					<i class="fab fa-instagram"></i>
+					<i class="fab fa-linkedin-in"></i>
+				  </div>
+				</div>
+  			</div>
+
+  			<div class="footer-bottom">
+    			<p>© 2026 <strong>SwiftRide</strong>. All rights reserved.</p>
+  			</div>
+		</footer>
+		
+		<button id="backToTop">
+  			<i class="fas fa-arrow-up"></i>
+		</button>
+		
+	  <!-- JAVASCRIPT LINK -->
+	  <script src="work2js.js"></script>
+	</div>
+</body>
+	
+</html>
