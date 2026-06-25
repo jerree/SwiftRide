@@ -83,103 +83,103 @@ document.addEventListener("DOMContentLoaded", function () {
   var destinationSelect = document.getElementById("destination");
   var form = document.getElementById("rideForm");
   var errorMessage = document.getElementById("error");
-  var transportList = document.getElementById("transportList");
 
-  // Disable same location in destination
+  var rideOptionsModal = document.getElementById("rideOptionsModal");
+  var rideOptionsList = document.getElementById("rideOptionsList");
+  var closeRideOptions = document.getElementById("closeRideOptions");
+
   function updateDestinationOptions() {
-    // Enable all options first
     for (var i = 0; i < destinationSelect.options.length; i++) {
       destinationSelect.options[i].disabled = false;
     }
 
-    // Disable the option that matches the selected location
     if (locationSelect.value) {
       for (var j = 0; j < destinationSelect.options.length; j++) {
         var option = destinationSelect.options[j];
+
         if (option.value === locationSelect.value && option.value !== "") {
           option.disabled = true;
         }
       }
     }
-  }	
+  }
 
-  // Validate before submitting
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // stop default form submission
+    e.preventDefault();
 
     if (locationSelect.value === destinationSelect.value) {
       errorMessage.textContent = "Pickup and destination cannot be the same!";
-      return; // don’t run searchRide if invalid
-    } else {
-      errorMessage.textContent = "";
-      searchRide(); // run the ride search
+      return;
     }
+
+    errorMessage.textContent = "";
+    searchRide();
   });
 
-  // Update options when location changes
   locationSelect.addEventListener("change", updateDestinationOptions);
-
-  // Run once at page load
   updateDestinationOptions();
 
-  // -------------------------------
-  // Ride search function (no prices)
-  // -------------------------------
-function searchRide() {
-  transportList.innerHTML = "";
+  function searchRide() {
+    rideOptionsList.innerHTML = "";
 
-  var transports = [
-    {
-      name: "City Bus",
-      icon: "fa-bus",
-      price: "500 NGN",
-      time: "15 mins",
-      status: "Available"
-    },
-    {
-      name: "Taxi Ride",
-      icon: "fa-taxi",
-      price: "1500 NGN",
-      time: "8 mins",
-      status: "Available"
-    },
-    {
-      name: "Tricycle Ride",
-      icon: "fa-car-side",
-      price: "700 NGN",
-      time: "10 mins",
-      status: "Available"
-    },
-    {
-      name: "Bike Ride",
-      icon: "fa-motorcycle",
-      price: "400 NGN",
-      time: "5 mins",
-      status: "Fastest"
+    var transports = [
+      {
+        name: "City Bus",
+        icon: "fa-bus",
+        price: "500 NGN",
+        time: "15 mins",
+        status: "Available"
+      },
+      {
+        name: "Taxi Ride",
+        icon: "fa-taxi",
+        price: "1500 NGN",
+        time: "8 mins",
+        status: "Available"
+      },
+      {
+        name: "Tricycle Ride",
+        icon: "fa-car-side",
+        price: "700 NGN",
+        time: "10 mins",
+        status: "Available"
+      },
+      {
+        name: "Bike Ride",
+        icon: "fa-motorcycle",
+        price: "400 NGN",
+        time: "5 mins",
+        status: "Fastest"
+      }
+    ];
+
+    for (var k = 0; k < transports.length; k++) {
+      var transport = transports[k];
+
+      var card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML =
+        "<div class='card-top'>" +
+        "<div class='ride-icon'><i class='fas " + transport.icon + "'></i></div>" +
+        "<span class='ride-status'>" + transport.status + "</span>" +
+        "</div>" +
+        "<h3>" + transport.name + "</h3>" +
+        "<div class='ride-info'>" +
+        "<p><i class='fas fa-money-bill-wave'></i> " + transport.price + "</p>" +
+        "<p><i class='fas fa-clock'></i> " + transport.time + "</p>" +
+        "</div>" +
+        "<button class='book-btn' onclick='bookRide(\"" + transport.name + "\", \"" + transport.price + "\", \"" + transport.time + "\")'>Book Ride</button>";
+
+      rideOptionsList.appendChild(card);
     }
-  ];
 
-  for (var k = 0; k < transports.length; k++) {
-    var transport = transports[k];
-
-    var card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML =
-      "<div class='card-top'>" +
-      "<div class='ride-icon'><i class='fas " + transport.icon + "'></i></div>" +
-      "<span class='ride-status'>" + transport.status + "</span>" +
-      "</div>" +
-      "<h3>" + transport.name + "</h3>" +
-      "<div class='ride-info'>" +
-      "<p><i class='fas fa-money-bill-wave'></i> " + transport.price + "</p>" +
-      "<p><i class='fas fa-clock'></i> " + transport.time + "</p>" +
-      "</div>" +
-      "<button class='book-btn' onclick='bookRide(\"" + transport.name + "\", \"" + transport.price + "\", \"" + transport.time + "\")'>Book Ride</button>";
-
-    transportList.appendChild(card);
+    rideOptionsModal.style.display = "flex";
   }
-}
+
+  closeRideOptions.onclick = function () {
+    rideOptionsModal.style.display = "none";
+  };
 });
 
 var countersStarted = false;
