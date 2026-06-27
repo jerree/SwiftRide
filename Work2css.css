@@ -1702,18 +1702,22 @@ footer{
 
 @media (max-width: 768px) {
 
-  .upper {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
+	.upper {
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+	  }
 
 	.upper {
 		flex-direction: row;
   		justify-content: space-between;
 		flex-wrap: wrap;
 	}
-
+	
+	.logo-text{
+		font-size: 1.5rem;
+	}
+	
 	.menu-icon {
 	  display: block;
 	}
@@ -1740,7 +1744,7 @@ footer{
 	  }
 
 	  nav ul a {
-		font-size: 0.95rem;
+		font-size: 0.8rem;
 		padding: 6px 2px;
 		flex: 1;
 		text-align: center;
@@ -1757,6 +1761,11 @@ footer{
 		box-shadow:0 8px 20px rgba(37,99,235,.35);
 	  }
 	
+	    .nav-btn{
+			padding: 8px 12px;
+			font-size: 0.8rem;
+		}
+	
 	  .hero {
 		padding: 55px 15px 10px;
 		overflow: visible;
@@ -1768,7 +1777,7 @@ footer{
 	  }
 
 	  .hero-dots {
-		right: 18px;
+		right: 3px;
 		top: 52%;
 		gap: 12px;
 		z-index: 5;
